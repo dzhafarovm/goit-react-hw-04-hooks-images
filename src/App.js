@@ -1,15 +1,15 @@
-import { Component } from "react";
-import { getImages } from "./Components/PixabayApi/PixabayApi.jsx";
-import { Searchbar } from "./Components/Searchbar/Searchbar.jsx";
-import { ImageGallery } from "./Components/ImageGallery/ImageGallery.jsx";
-import { Button } from "./Components/Button/Button.jsx";
-import { Modal } from "./Components/Modal/Modal.jsx";
-import { LoaderSpinner } from "./Components/LoaderSpinner/LoaderSpinner.jsx";
-import css from "./App.module.css";
+import { Component } from 'react';
+import { getImages } from './Components/PixabayApi/PixabayApi.jsx';
+import { Searchbar } from './Components/Searchbar/Searchbar.jsx';
+import { ImageGallery } from './Components/ImageGallery/ImageGallery.jsx';
+import { Button } from './Components/Button/Button.jsx';
+import { Modal } from './Components/Modal/Modal.jsx';
+import { LoaderSpinner } from './Components/LoaderSpinner/LoaderSpinner.jsx';
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
-    searchQuery: "",
+    searchQuery: '',
     selectedImage: null,
     page: 1,
     arrImages: [],
@@ -29,7 +29,7 @@ export class App extends Component {
   }
 
   nextPage = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       page: prevState.page + 1,
     }));
   };
@@ -40,16 +40,16 @@ export class App extends Component {
     const q = searchQuery;
     const optionsApi = { q, page };
 
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       loading: true,
+      error: false,
     }));
 
     getImages(optionsApi)
-      .then((arrImages) => {
+      .then(arrImages => {
         if (arrImages.length > 0) {
-          this.setState((prevState) => ({
+          this.setState(prevState => ({
             arrImages: [...prevState.arrImages, ...arrImages],
-            error: false,
           }));
         } else {
           this.setState({ error: true });
@@ -60,12 +60,12 @@ export class App extends Component {
   };
 
   // --> Выбор src для модального окна
-  handleSelectImage = (largeImage) =>
+  handleSelectImage = largeImage =>
     this.setState({ selectedImage: largeImage });
 
   // --> Закрытие модалки
-  closeModal = (e) => {
-    if (e.target === e.currentTarget || e.code === "Escape") {
+  closeModal = e => {
+    if (e.target === e.currentTarget || e.code === 'Escape') {
       this.setState({
         selectedImage: null,
       });
@@ -76,12 +76,12 @@ export class App extends Component {
   scrollTo = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
   // --> Сброс параметров для нового запроса
-  updateQuery = (query) => {
+  updateQuery = query => {
     this.setState({
       searchQuery: query,
       page: 1,
