@@ -25,6 +25,7 @@ export const App = () => {
         return;
       }
 
+      setError(false);
       setLoading(true);
 
       getImages(optionsApi)
