@@ -17,6 +17,6 @@ export const ImageGalleryItem = ({ image, alt, onSelect, largeImage }) => {
 ImageGalleryItem.propTypes = {
   image: PropTypes.string,
   alt: PropTypes.string.isRequired,
-  largeImage: PropTypes.string.isRequired,
   onSelect: PropTypes.func.isRequired,
+  largeImage: PropTypes.string.isRequired,
 };

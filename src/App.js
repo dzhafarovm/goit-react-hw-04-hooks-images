@@ -29,9 +29,9 @@ export const App = () => {
       setLoading(true);
 
       getImages(optionsApi)
-        .then(arrIm => {
-          if (arrIm.length > 0) {
-            setArrImages(s => [...s, ...arrIm]);
+        .then(arrImages => {
+          if (arrImages.length > 0) {
+            setArrImages(s => [...s, ...arrImages]);
             scrollTo();
           } else {
             setError(true);

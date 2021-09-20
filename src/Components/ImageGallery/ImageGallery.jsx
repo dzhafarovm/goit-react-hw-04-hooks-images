@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import css from './ImageGallery.module.css';
-
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 
 export const ImageGallery = ({ images, query, onSelect }) => {
@@ -22,4 +21,5 @@ export const ImageGallery = ({ images, query, onSelect }) => {
 ImageGallery.propTypes = {
   images: PropTypes.array.isRequired,
   query: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
